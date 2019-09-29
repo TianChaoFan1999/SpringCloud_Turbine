@@ -1,0 +1,33 @@
+server:
+  port: 8092
+    
+spring:
+  application:
+    name: hystrix-turbine
+    
+eureka: 
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client: 
+    service-url: 
+      
+      #设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔。（多server访问地址用于搭建eureka集群环境）
+      defaultZone: http://${eureka.instance.hostname}:8083/eureka/
+    
+    #表示是否将自己注册到Eureka Server，默认为true。
+    register-with-eureka: true
+    
+    #表示是否从Eureka Server获取注册信息，默认为true。
+    fetch-registry: true
+
+# Turbine多服务监控 
+turbine: 
+  # 指定要监控的应用名称
+  app-config: feign-custormer
+  
+  # 指定要监控的集群名称(不能随便指定，否则Turbine无法获取需要监控的服务，默认使用default)
+  cluster-name-expression: new String("default") 
+  
+  # 表示同一主机上的服务通过host和port的组合来进行区分，默认情况下是使用host来区分，这样会使本地调试有问题
+  combine-host-port: true

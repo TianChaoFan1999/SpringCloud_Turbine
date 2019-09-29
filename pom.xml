@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.tcf.cloud.demo</groupId>
+	<artifactId>spring-cloud-hystrix-turbine</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+    
+    <!-- TODO TCF SpringCloud基础依赖 -->
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Dalston.SR3</version>
+		<relativePath />
+	</parent>
+	
+	<properties>
+	
+	   <!-- TODO TCF Maven 误报版本冲突解决 -->
+       <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+       
+	</properties>
+	
+	<dependencies>
+	    
+	    <!-- TODO TCF Actuator手动实时刷新组件 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<!-- TODO TCF Turbine多服务监控组件 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-turbine</artifactId>
+		</dependency>
+		
+		<!-- TODO TCF Eureka注册中心客户端:Turbine必须注册到Eureka注册中心，否则无法获取监控服务 -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+</project>
